@@ -9,6 +9,7 @@ function App() {
     };
 
     return (
+        <>
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
             <h1>Welcome to Simple App</h1>
             <button onClick={toggleMessage} style={{ padding: '10px', fontSize: '16px' }}>
@@ -20,6 +21,7 @@ function App() {
                 </p>
             )}
         </div>
+        </>
     );
 }
 
