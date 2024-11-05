@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import './App.css'
 import JobListing from './component/JobListing';
 
 function App() {
