@@ -1,8 +1,13 @@
 # Job listing app
 ## Core components and features:
-1. Role based views
-2. User authetication and authourization
-3. Job listing components
+### Mohammed:
+1. Job listing components
+2. Job details components
+
+### Ira:
+3. User authentication and authorization
 4. Search components
-5. Job details component
-7. application progress bar
+
+### Danson:
+6. Role based views
+7. Application progress bar
