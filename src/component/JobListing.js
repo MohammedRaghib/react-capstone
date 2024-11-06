@@ -138,6 +138,7 @@ const JobListing = () => {
                   value={formData.salary}
                   onChange={handleInputChange}
                   placeholder="e.g., $50,000 - $70,000"
+                  required
                 />
               </div>
 
@@ -148,6 +149,7 @@ const JobListing = () => {
                   name="location"
                   value={formData.location}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
             </div>
@@ -190,6 +192,7 @@ const JobListing = () => {
                 value={formData.experience}
                 onChange={handleInputChange}
                 placeholder="e.g., 3+ years"
+                required
               />
             </div>
 
@@ -200,6 +203,7 @@ const JobListing = () => {
                 value={formData.qualifications}
                 onChange={handleInputChange}
                 placeholder="Required qualifications and skills"
+                required
               />
             </div>
 
@@ -231,6 +235,7 @@ const JobListing = () => {
                   name="deadline"
                   value={formData.deadline}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
@@ -254,6 +259,7 @@ const JobListing = () => {
                   name="department"
                   value={formData.department}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
 
@@ -264,6 +270,7 @@ const JobListing = () => {
                   name="reportingTo"
                   value={formData.reportingTo}
                   onChange={handleInputChange}
+                  required
                 />
               </div>
             </div>
