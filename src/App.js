@@ -4,7 +4,7 @@ import JobListing from './component/JobListing';
 function App() {
     return (
         <>
-            <JobListing />
+        <JobListing/>
         </>
     );
 }
