@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import plus from './plus.png';
+import pencil from './pencil.png';
 
-
-function JobListing() {
-  const [ShowForm, setShowForm] = useState(false)
+const JobListing = () => {
+  const [showForm, setShowForm] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [formData, setFormData] = useState({
@@ -22,6 +22,19 @@ function JobListing() {
     reportingTo: '',
     remote: 'No'
   });
+  const [searchTerm, setSearchTerm] = useState(null);
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
+
+  useEffect(() => {
+    if (searchTerm) {
+      const results = jobs.filter(job =>
+        job.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredJobs(results);
+    } else {
+      setFilteredJobs(jobs);
+    }
+  }, [searchTerm, jobs]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +67,7 @@ function JobListing() {
 
     setJobs(prevJobs => [...prevJobs, newJob]);
     resetForm();
-    form()
+    toggleForm();
   };
 
   const resetForm = () => {
@@ -80,14 +93,18 @@ function JobListing() {
     setSelectedJob(selectedJob === jobId ? null : jobId);
   };
 
-  const form = () => {
-    setShowForm(!ShowForm)
-  }
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <div className="job-listing-container">
-      {!ShowForm && (<button onClick={form} className='add-job-button'><img src={plus} alt='Plus icon' height={16} width={16} /></button>)}
-      {ShowForm && (
+      {!showForm && (
+        <button onClick={toggleForm} className='add-job-button'>
+          <img src={plus} alt='Plus icon' height={16} width={16} />
+        </button>
+      )}
+      {showForm && (
         <aside className="job-form-container">
           <h2>Add New Job</h2>
           <form className="job-form">
@@ -260,95 +277,110 @@ function JobListing() {
 
       <main className="jobs-display">
         <h2>Posted Jobs</h2>
-        {jobs.map((job) => (
-          <div key={job.id} className="job-card">
-            <div className="job-card-header">
-              <div>
-                <h3>{job.name}</h3>
-                <p className="job-location">{job.location}</p>
-                <p className="job-date">Posted: {job.datePosted}</p>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search for jobs..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
+        <div className='All-cards'>
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <div key={job.id} className="job-card">
+                <div className="job-card-header">
+                  <div>
+                    <h3>{job.name}</h3>
+                    <p className="job-location">{job.location}</p>
+                    <p className="job-date">Posted: {job.datePosted}</p>
+                  </div>
+                  <span className="status-badge">{job.status}</span>
+                </div>
+
+                <button
+                  onClick={() => toggleJobDetails(job.id)}
+                  className="details-button"
+                >
+                  {selectedJob === job.id ? 'Hide Details' : 'View Details'}
+                </button>
+
+                {selectedJob === job.id && (
+                  <div className="job-details">
+                    <div className="details-grid">
+                      <div>
+                        <p className="detail-label">Salary Range:</p>
+                        <p>{job.salary || 'Not specified'}</p>
+                      </div>
+                      <div>
+                        <p className="detail-label">Employment Type:</p>
+                        <p>{job.employmentType}</p>
+                      </div>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Description:</p>
+                      <p>{job.description}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Required Experience:</p>
+                      <p>{job.experience || 'Not specified'}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Qualifications:</p>
+                      <p>{job.qualifications || 'Not specified'}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Responsibilities:</p>
+                      <p>{job.responsibilities || 'Not specified'}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Benefits:</p>
+                      <p>{job.benefits || 'Not specified'}</p>
+                    </div>
+
+                    <div className="details-grid">
+                      <div>
+                        <p className="detail-label">Work Schedule:</p>
+                        <p>{job.workSchedule || 'Not specified'}</p>
+                      </div>
+                      <div>
+                        <p className="detail-label">Remote Work:</p>
+                        <p>{job.remote}</p>
+                      </div>
+                    </div>
+
+                    <div className="details-grid">
+                      <div>
+                        <p className="detail-label">Department:</p>
+                        <p>{job.department || 'Not specified'}</p>
+                      </div>
+                      <div>
+                        <p className="detail-label">Reporting To:</p>
+                        <p>{job.reportingTo || 'Not specified'}</p>
+                      </div>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Application Deadline:</p>
+                      <p>{job.deadline || 'Not specified'}</p>
+                    </div>
+                  </div>
+                )}
               </div>
-              <span className="status-badge">{job.status}</span>
-            </div>
-
-            <button
-              onClick={() => toggleJobDetails(job.id)}
-              className="details-button"
-            >
-              {selectedJob === job.id ? 'Hide Details' : 'View Details'}
-            </button>
-
-            {selectedJob === job.id && (
-              <div className="job-details">
-                <div className="details-grid">
-                  <div>
-                    <p className="detail-label">Salary Range:</p>
-                    <p>{job.salary || 'Not specified'}</p>
-                  </div>
-                  <div>
-                    <p className="detail-label">Employment Type:</p>
-                    <p>{job.employmentType}</p>
-                  </div>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Description:</p>
-                  <p>{job.description}</p>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Required Experience:</p>
-                  <p>{job.experience || 'Not specified'}</p>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Qualifications:</p>
-                  <p>{job.qualifications || 'Not specified'}</p>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Responsibilities:</p>
-                  <p>{job.responsibilities || 'Not specified'}</p>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Benefits:</p>
-                  <p>{job.benefits || 'Not specified'}</p>
-                </div>
-
-                <div className="details-grid">
-                  <div>
-                    <p className="detail-label">Work Schedule:</p>
-                    <p>{job.workSchedule || 'Not specified'}</p>
-                  </div>
-                  <div>
-                    <p className="detail-label">Remote Work:</p>
-                    <p>{job.remote}</p>
-                  </div>
-                </div>
-
-                <div className="details-grid">
-                  <div>
-                    <p className="detail-label">Department:</p>
-                    <p>{job.department || 'Not specified'}</p>
-                  </div>
-                  <div>
-                    <p className="detail-label">Reporting To:</p>
-                    <p>{job.reportingTo || 'Not specified'}</p>
-                  </div>
-                </div>
-
-                <div className="detail-section">
-                  <p className="detail-label">Application Deadline:</p>
-                  <p>{job.deadline || 'Not specified'}</p>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+            ))
+          ) : (
+            <p>No jobs found.</p>
+          )}
+        </div>
       </main>
     </div>
   );
-}
+};
 
 export default JobListing;
