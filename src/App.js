@@ -1,17 +1,14 @@
-
-import React, { useState } from 'react';
-
-function App() {
-    const [showMessage, setShowMessage] = useState(false);
-
-    const toggleMessage = () => {
-        setShowMessage(!showMessage);
-    };
-
+// src/App.js
+import React from 'react';
+import { UserProvider } from './UserContext';
+import RoleBasedView from './RoleBasedView';
+import ProgressBar from './ProgressBar';
+import Components from './Components/AdminPanel'
+const App = () => {
     return (
         <>
         </>
     );
-}
+};
 
 export default App;
