@@ -1,8 +1,8 @@
 import React from 'react';
-import AdminView from './components/RoleBasedView/AdminView';
-import RecruiterView from './components/RoleBasedView/RecruiterView';
-import ApplicantView from './components/RoleBasedView/ApplicantView';
-import ProgressBar from './components/ProgressBar/ProgressBar';
+import AdminView from './Components/RoleBasedView/AdminView';
+import RecruiterView from './Components/RoleBasedView/RecruiterView';
+import ApplicantView from './Components/RoleBasedView/ApplicantView';
+import ProgressBar from './Components/Progress/ProgressBar';
 
 const App = () => {
   const userRole = 'applicant'; // Change this to 'admin', 'recruiter', or 'applicant' to test each view
