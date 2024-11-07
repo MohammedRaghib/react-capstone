@@ -20,11 +20,11 @@ const App = () => {
             <h1>Job Listings</h1>
             <Search jobs={jobListings} />
         </div>
-        // src/App.js
-        // const App = () => {
-        //     return (
-        //         <>
-        //         </>
+// src/App.js
+// const App = () => {
+//     return (
+//         <>
+//         </>
     );
 };
 
