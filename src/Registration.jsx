@@ -168,7 +168,7 @@ function Registration() {
                 </button>
             </form>
 
-            <button onClick={handleSignUp}>Sign Up</button>
+            <button onClick={handleSignUp}>Sign Up!</button>
             <button onClick={handlePasswordReset}>Forgot Password?</button>
             
             <div className="social-icons">

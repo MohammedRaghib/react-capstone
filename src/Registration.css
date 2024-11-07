@@ -75,7 +75,7 @@ body {
 
 /* Remember Me Label */
 .container label[for="rememberMe"] {
-    color: white; /* Set the text color to white */
+    color: white; 
     font-size: 14px;
     cursor: pointer;
 }
