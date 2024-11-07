@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 
 import React, { useState } from 'react';
 
@@ -8,7 +8,7 @@ function App() {
     const toggleMessage = () => {
         setShowMessage(!showMessage);
     };
-=======
+
 import React from 'react';
 import './App.css';
 import Search from './search'; // Adjust the path if necessary
@@ -25,7 +25,7 @@ const App = () => {
         { title: 'UX Designer', company: 'Design Studio', location: 'Remote' },
         { title: 'Data Analyst', company: 'Data Solutions', location: 'Boston' },
     ];
->>>>>>> origin/main
+origin/main
 
     return (
         <div className="App">
@@ -38,6 +38,6 @@ const App = () => {
 //         <>
 //         </>
     );
-}
+};
 
-export default App;
+export default App ;
