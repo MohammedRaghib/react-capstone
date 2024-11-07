@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import plus from './plus.png';
-import pencil from './pencil.png';
 
 const JobListing = () => {
   const [showForm, setShowForm] = useState(false);
