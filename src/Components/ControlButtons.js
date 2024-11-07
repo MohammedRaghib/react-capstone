@@ -1,22 +1,14 @@
 // src/components/ControlButtons.js
 import React from 'react';
+import './RoleBasedView/RoleBasedView.css'
 
-const ControlButtons = ({ onRoleChange, onNextStep, onResetStep }) => (
+const ControlButtons = ({ handleview }) => (
   <div className="control-buttons">
-    <button onClick={() => onRoleChange('admin')} title="Switch to Admin view">
-      Admin View
-    </button>
-    <button onClick={() => onRoleChange('recruiter')} title="Switch to Recruiter view">
+    <button onClick={() => handleview('Recruiter')} title="Switch to Recruiter view">
       Recruiter View
     </button>
-    <button onClick={() => onRoleChange('applicant')} title="Switch to Applicant view">
+    <button onClick={() => handleview('Applicant')} title="Switch to Applicant view">
       Applicant View
-    </button>
-    <button onClick={onNextStep} title="Progress to the next step in your application">
-      Next Step
-    </button>
-    <button onClick={onResetStep} title="Reset application progress">
-      Reset Progress
     </button>
   </div>
 );

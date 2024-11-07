@@ -14,7 +14,7 @@ import { useState } from "react";
 import { app } from "./firebase"; // Adjust the path as necessary
 import './Registration.css';
 
-function Registration() {
+function Registration({ handleview }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
@@ -34,7 +34,7 @@ function Registration() {
         e.preventDefault();
         setLoginError('');
         setSuccessMessage('');
-        
+
         if (!isPasswordValid(password)) {
             setLoginError("Password must be at least 8 characters long, including uppercase, lowercase, number, and symbol.");
             return;
@@ -69,14 +69,15 @@ function Registration() {
             setLoginError(error.message);
         } finally {
             setIsLoading(false);
+            handleview('role')
         }
     };
 
-    const handleGoogleLogin = async () => {
+    const handleGoogleLogin = async (handleview) => {
         setLoginError('');
         setSuccessMessage('');
         setIsLoading(true);
-        
+
         try {
             await signInWithPopup(auth, googleProvider);
             setSuccessMessage("Google sign-in successful!");
@@ -85,13 +86,14 @@ function Registration() {
             setLoginError(error.message);
         } finally {
             setIsLoading(false);
+            handleview('role')
         }
     };
 
     const handlePasswordReset = async () => {
         setLoginError('');
         setSuccessMessage('');
-        
+
         if (!email) {
             setLoginError("Please enter your email for password reset.");
             return;
@@ -108,7 +110,7 @@ function Registration() {
     const handleDeleteAccount = async () => {
         setLoginError('');
         setSuccessMessage('');
-        
+
         if (!auth.currentUser) {
             setLoginError("No user logged in to delete.");
             return;
@@ -127,7 +129,7 @@ function Registration() {
             <h2>Welcome</h2>
             {successMessage && <p className="success-message">{successMessage}</p>}
             {loginError && <p className="error-message">{loginError}</p>}
-            
+
             <form className="log" onSubmit={handleLogin}>
                 <input
                     type="email"
@@ -168,15 +170,15 @@ function Registration() {
                 </button>
             </form>
 
-            <button onClick={handleSignUp}>Sign Up!</button>
-            <button onClick={handlePasswordReset}>Forgot Password?</button>
-            
+            <button onClick={handleSignUp} className="btn">Sign Up!</button>
+            <button onClick={handlePasswordReset} className="btn">Forgot Password?</button>
+
             <div className="social-icons">
                 <button onClick={handleGoogleLogin} className="google-button">
                     Continue with Google
                 </button>
             </div>
-            
+
             <button onClick={handleDeleteAccount}>Delete Account!</button>
         </div>
     );

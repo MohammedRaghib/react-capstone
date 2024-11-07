@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import plus from './plus.png';
+import { database } from '../firebase.js';
 
 const JobListing = () => {
   const [showForm, setShowForm] = useState(false);
@@ -25,6 +26,18 @@ const JobListing = () => {
   const [filteredJobs, setFilteredJobs] = useState(jobs);
 
   useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const snapshot = await database.ref('jobs').once('value');
+        const jobData = snapshot.val();
+        setJobs(Object.values(jobData || {}));
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+    };
+
+    fetchJobs();
+
     if (searchTerm) {
       const results = jobs.filter(job =>
         job.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -64,9 +77,16 @@ const JobListing = () => {
       datePosted: new Date().toISOString().split('T')[0]
     };
 
-    setJobs(prevJobs => [...prevJobs, newJob]);
-    resetForm();
-    toggleForm();
+    database.ref('jobs').push(newJob)
+      .then(() => {
+        console.log('Job added successfully!');
+        setJobs(prevJobs => [...prevJobs, newJob]);
+        resetForm();
+        toggleForm();
+      })
+      .catch(error => {
+        console.error('Error adding job:', error);
+      });
   };
 
   const resetForm = () => {
