@@ -177,7 +177,7 @@ function Registration() {
                 </button>
             </div>
             
-            <button onClick={handleDeleteAccount}>Delete Account</button>
+            <button onClick={handleDeleteAccount}>Delete Account!</button>
         </div>
     );
 }

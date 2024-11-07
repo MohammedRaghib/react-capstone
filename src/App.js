@@ -1,5 +1,5 @@
 import './App.css';
-import Registration from './Registration'; // Ensure the path is correct
+import Registration from './Registration'; 
 
 function App() {
   return (

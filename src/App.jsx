@@ -12,7 +12,7 @@ function App() {
         <Registration />
       </main>
       <footer className='App-footer'>
-        <p>&copy; 2023 Authentication App. All rights reserved.</p>
+        <p>&copy; 2023 Authentication App. All rights reserved</p>
       </footer>
     </div>
   );
