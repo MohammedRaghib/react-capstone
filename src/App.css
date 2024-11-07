@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+body {
+  background-color: #000814;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --dark-blue: #000814;
+  --navy-blue: #011D3D;
+  --dark-navy: #003566;
+  --gold: #FFC300;
+  --yellow: #FFD60A;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.job-listing-container {
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.add-job-button {
+  background-color: var(--gold);
+  color: var(--dark-blue);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.job-form-container {
+  background-color: var(--navy-blue);
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--yellow);
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.job-form h2 {
+  color: var(--yellow);
+}
+
+.form-group label {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--dark-navy);
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+}
+
+.submit-button {
+  background-color: var(--gold);
+  color: var(--dark-blue);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.jobs-display {
+  background-color: var(--navy-blue);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--dark-navy);
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+}
+
+.job-card {
+  background-color: var(--dark-navy);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  color: var(--yellow);
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  background-color: var(--yellow);
+  color: var(--dark-blue);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.details-button {
+  background-color: var(--gold);
+  color: var(--dark-blue);
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: var(--yellow);
+}
+
+.edit-button img {
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: var(--gold);
+  color: var(--dark-blue);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.edit-button:hover {
+  background-color: var(--navy-blue);
+  color: var(--gold);
 }
