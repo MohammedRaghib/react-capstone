@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
 import Search from './search'; // Adjust the path if necessary
+import React from 'react';
+import { UserProvider } from './UserContext';
+import RoleBasedView from './RoleBasedView';
+import ProgressBar from './ProgressBar';
+import Components from './Components/AdminPanel'
 
 const App = () => {
     const jobListings = [
@@ -15,6 +20,11 @@ const App = () => {
             <h1>Job Listings</h1>
             <Search jobs={jobListings} />
         </div>
+// src/App.js
+// const App = () => {
+//     return (
+//         <>
+//         </>
     );
 };
 
