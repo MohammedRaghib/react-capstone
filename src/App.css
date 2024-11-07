@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   background-color: #000814;
 }
@@ -40,6 +41,55 @@ body {
 
 .job-form h2 {
   color: var(--yellow);
+=======
+/* App container */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  color: #333;
+  font-family: 'Montserrat', sans-serif; /* Added font */
+}
+
+/* Header styling */
+.App-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #512da8; /* Adjusted to match button */
+  color: white;
+  border-bottom: 1px solid #0056b3;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.App-header p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+
+.App-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Footer styling */
+.App-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #512da8; 
+  color: white;
+  font-size: 14px;
+  border-top: 1px solid #0056b3;
+>>>>>>> origin/main
 }
 
 .form-group label {
