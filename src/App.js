@@ -1,43 +1,33 @@
-HEAD
-
+// src/App.js
 import React, { useState } from 'react';
-
-function App() {
-    const [showMessage, setShowMessage] = useState(false);
-
-    const toggleMessage = () => {
-        setShowMessage(!showMessage);
-    };
-
-import React from 'react';
-import './App.css';
-import Search from './search'; // Adjust the path if necessary
-import React from 'react';
-import { UserProvider } from './UserContext';
-import RoleBasedView from './RoleBasedView';
-import ProgressBar from './ProgressBar';
-import Components from './Components/AdminPanel'
+import AdminView from './Components/RoleBasedView/AdminView';
+import RecruiterView from './Components/RoleBasedView/RecruiterView';
+import ApplicantView from './Components/RoleBasedView/ApplicantView';
 
 const App = () => {
-    const jobListings = [
-        { title: 'Software Engineer', company: 'Tech Corp', location: 'New York' },
-        { title: 'Product Manager', company: 'Business Inc', location: 'San Francisco' },
-        { title: 'UX Designer', company: 'Design Studio', location: 'Remote' },
-        { title: 'Data Analyst', company: 'Data Solutions', location: 'Boston' },
-    ];
-origin/main
+  const [currentView, setCurrentView] = useState('admin'); // Default view
 
-    return (
-        <div className="App">
-            <h1>Job Listings</h1>
-            <Search jobs={jobListings} />
-        </div>
-// src/App.js
-// const App = () => {
-//     return (
-//         <>
-//         </>
-    );
+  const handleViewChange = (view) => {
+    setCurrentView(view);
+  };
+
+  return (
+    <div className="app-container">
+      <h1>Role-Based Dashboard</h1>
+      
+      <div className="control-buttons">
+        <button onClick={() => handleViewChange('admin')}>Admin View</button>
+        <button onClick={() => handleViewChange('recruiter')}>Recruiter View</button>
+        <button onClick={() => handleViewChange('applicant')}>Applicant View</button>
+      </div>
+
+      <div className="role-view-container">
+        {currentView === 'admin' && <AdminView />}
+        {currentView === 'recruiter' && <RecruiterView />}
+        {currentView === 'applicant' && <ApplicantView />}
+      </div>
+    </div>
+  );
 };
 
-export default App ;
+export default App;
