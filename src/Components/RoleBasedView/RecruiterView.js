@@ -1,5 +1,4 @@
 // src/components/RoleBasedView/RecruiterView.js
-import plus from './plus.png';
 import React, { useState } from 'react';
 import './RoleBasedView.css';
 
@@ -152,7 +151,7 @@ const RecruiterView = () => {
     <div className="job-listing-container">
       {!showForm && (
         <button onClick={toggleForm} className='add-job-button'>
-          <img src={plus} alt='Plus icon' height={16} width={16} />
+          ➕
         </button>
       )}
       {showForm && (
