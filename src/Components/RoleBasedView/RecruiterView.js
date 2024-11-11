@@ -3,62 +3,7 @@ import './RoleBasedView.css';
 
 const RecruiterView = () => {
   const [showForm, setShowForm] = useState(false);
-  const [jobs, setJobs] = useState([
-    {
-      id: 1,
-      name: 'Software Engineer',
-      location: 'Remote',
-      datePosted: '2023-10-01',
-      status: 'Hiring',
-      salary: '$80,000 - $100,000',
-      employmentType: 'Full-time',
-      experience: '3+ years',
-      qualifications: 'Bachelor’s degree in Computer Science',
-      responsibilities: 'Develop and maintain web applications',
-      benefits: 'Health insurance, 401(k)',
-      workSchedule: 'Mon-Fri, 9-5',
-      department: 'Engineering',
-      reportingTo: 'Engineering Manager',
-      remote: 'Yes',
-      deadline: '2023-12-31',
-    },
-    {
-      id: 2,
-      name: 'Product Manager',
-      location: 'New York, NY',
-      datePosted: '2023-09-15',
-      status: 'Hiring',
-      salary: '$90,000 - $120,000',
-      employmentType: 'Full-time',
-      experience: '5+ years',
-      qualifications: 'Experience in product management',
-      responsibilities: 'Lead product development and strategy',
-      benefits: 'Health insurance, stock options',
-      workSchedule: 'Mon-Fri, 10-6',
-      department: 'Product',
-      reportingTo: 'Director of Product',
-      remote: 'No',
-      deadline: '2023-11-30',
-    },
-    {
-      id: 3,
-      name: 'UX Designer',
-      location: 'San Francisco, CA',
-      datePosted: '2023-08-20',
-      status: 'Hiring',
-      salary: '$70,000 - $90,000',
-      employmentType: 'Part-time',
-      experience: '2+ years',
-      qualifications: 'Proficient in design tools',
-      responsibilities: 'Design user experiences for web applications',
-      benefits: 'Flexible hours, remote work options',
-      workSchedule: 'Part-time, flexible',
-      department: 'Design',
-      reportingTo: 'Design Lead',
-      remote: 'Yes',
-      deadline: '2023-12-15',
-    },
-  ]);
+  const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [formData, setFormData] = useState({
     jobName: '',
