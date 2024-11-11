@@ -1,4 +1,3 @@
-// src/components/RoleBasedView/RecruiterView.js
 import React, { useState } from 'react';
 import './RoleBasedView.css';
 
