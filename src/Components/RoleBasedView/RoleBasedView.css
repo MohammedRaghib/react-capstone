@@ -1,4 +1,12 @@
-/* RoleBasedView.css */
+* {
+  background-color: #000814;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
 body,
 .job-listing-container {
   background-color: #000814;
@@ -200,6 +208,128 @@ body,
 .control-buttons button:focus {
   outline: 2px solid #003566;
 }
+
+/* src/components/RoleBasedView/RoleBasedView.css */
+
+/* General Styling for Background */
+.role-view {
+  background-color: #000814 !important;
+  color: #FFD60A;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2,
+h3,
+h4 {
+  color: #FFC300;
+}
+
+.jobs-display {
+  margin-top: 20px;
+}
+
+.job-card {
+  background-color: #011D3D;
+  color: #FFD60A;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #003566;
+}
+
+/* Job Card Header */
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #003566;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.job-location,
+.job-date {
+  color: #FFC300;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  background-color: #FFC300;
+  color: #000814;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Buttons */
+button {
+  background-color: #003566;
+  color: #FFD60A;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #011D3D;
+}
+
+/* Edit Form Styles */
+.job-edit-form {
+  background-color: #011D3D;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 10px;
+  border: 1px solid #003566;
+}
+
+.job-form label {
+  color: #FFC300;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background-color: #000814;
+  color: #FFD60A;
+  border: 1px solid #003566;
+  border-radius: 4px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #FFC300;
+}
+
+.save-button,
+.edit-button,
+.delete-button {
+  background-color: #FFC300;
+  color: #000814;
+}
+
+.save-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #FFD60A;
+}
+
+/* Styling for Admin Header and Job Management */
+.role-view.admin-view h2 {
+  color: #FFC300;
+  border-bottom: 2px solid #FFD60A;
+  padding-bottom: 8px;
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

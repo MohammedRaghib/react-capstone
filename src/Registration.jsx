@@ -64,12 +64,16 @@ function Registration({ handleview }) {
             }
             await signInWithEmailAndPassword(auth, email, password);
             setSuccessMessage("Logged in successfully!");
+            if (auth.currentUser.email === 'admin@gmail.com') {
+                handleview('admin')
+            } else {
+                handleview('role')
+            }
         } catch (error) {
             console.log(error);
             setLoginError(error.message);
         } finally {
             setIsLoading(false);
-            handleview('role')
         }
     };
 
@@ -146,6 +150,8 @@ function Registration({ handleview }) {
                         placeholder="Enter password"
                         required
                     />
+                </div>
+                <div className="checkboxes">
                     <label htmlFor="showPassword">
                         <input
                             type="checkbox"
@@ -155,22 +161,25 @@ function Registration({ handleview }) {
                         />
                         Show Password
                     </label>
+                    <div className="checkbox-container">
+                        <label htmlFor="rememberMe">
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                checked={rememberMe}
+                                onChange={() => setRememberMe(!rememberMe)}
+                            />
+                            Remember Me
+                        </label>
+                    </div>
                 </div>
-                <div>
-                    <input
-                        type="checkbox"
-                        id="rememberMe"
-                        checked={rememberMe}
-                        onChange={() => setRememberMe(!rememberMe)}
-                    />
-                    <label htmlFor="rememberMe">Remember Me</label>
+                <div className="login_and_sign_up">
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? "Loading..." : "Login"}
+                    </button>
+                    <button onClick={handleSignUp} className="btn">Sign Up!</button>
                 </div>
-                <button type="submit" disabled={isLoading}>
-                    {isLoading ? "Loading..." : "Login"}
-                </button>
             </form>
-
-            <button onClick={handleSignUp} className="btn">Sign Up!</button>
             <button onClick={handlePasswordReset} className="btn">Forgot Password?</button>
 
             <div className="social-icons">
@@ -184,4 +193,4 @@ function Registration({ handleview }) {
     );
 }
 
-export default Registration;
+export default Registration;    

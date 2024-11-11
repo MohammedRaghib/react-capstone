@@ -65,6 +65,7 @@ const RecruiterView = () => {
   const [formData, setFormData] = useState({
     jobName: '',
     jobDescription: '',
+    jobApplication: '',
     salary: '',
     location: '',
     employmentType: 'Full-time',
@@ -97,6 +98,7 @@ const RecruiterView = () => {
       id: Date.now(),
       name: formData.jobName,
       description: formData.jobDescription,
+      application: formData.jobApplication,
       status: 'Hiring',
       salary: formData.salary,
       location: formData.location,
@@ -122,6 +124,7 @@ const RecruiterView = () => {
     setFormData({
       jobName: '',
       jobDescription: '',
+      jobApplication: '',
       salary: '',
       location: '',
       employmentType: 'Full-time',
@@ -172,6 +175,16 @@ const RecruiterView = () => {
               <textarea
                 name="jobDescription"
                 value={formData.jobDescription}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Job Application Link</label>
+              <textarea
+                name="jobApplication"
+                value={formData.jobApplication}
                 onChange={handleInputChange}
                 required
               />
@@ -377,6 +390,11 @@ const RecruiterView = () => {
                     <div className="detail-section">
                       <p className="detail-label">Description:</p>
                       <p>{job.description || 'Not specified'}</p>
+                    </div>
+
+                    <div className="detail-section">
+                      <p className="detail-label">Link to apply:</p>
+                      <p>{job.application || 'Not specified'}</p>
                     </div>
 
                     <div className="detail-section">
