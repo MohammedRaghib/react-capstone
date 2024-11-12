@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './RoleBasedView.css';
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from '../../firebase';
 
 const AdminView = () => {
@@ -16,6 +16,7 @@ const AdminView = () => {
     employmentType: 'Full-time',
   });
   const [searchTerm, setSearchTerm] = useState('');
+  const [editingJobId, setEditingJobId] = useState(null);
 
   const fetchJobs = async () => {
     const jobsCollection = collection(db, "jobs");
@@ -53,26 +54,58 @@ const AdminView = () => {
     };
 
     try {
+      if (editingJobId) {
+        const docRef = await updateDoc(collection(db, 'jobs'), editingJobId);
+        console.log('Edited job with ID:' + docRef.id)
+      }
       const docRef = await addDoc(collection(db, "jobs"), newJob);
       console.log("Document written with ID: ", docRef.id);
-      fetchJobs();
     } catch (e) {
       console.error("Error adding document: ", e);
     }
 
+    fetchJobs();
     resetForm();
     toggleForm();
+    setEditingJobId(null);
   };
+
+  const editJob = (job) => {
+    setFormData({
+      jobName: job.name,
+      jobDescription: job.description,
+      jobApplication: job.application,
+      salary: job.salary,
+      location: job.location,
+      employmentType: job.employmentType
+    });
+
+    setEditingJobId(job.id);
+    setShowForm(true);
+  }
+
+  const deleteJob = async (jobId) => {
+    try {
+      const jobDocRef = doc(db, "jobs", jobId);
+      await deleteDoc(jobDocRef);
+      console.log("Job deleted with ID: ", jobId);
+      fetchJobs(); // Refresh the list
+    } catch (e) {
+      console.error("Error deleting job: ", e);
+    }
+  };
+
+
 
   const resetForm = () => {
     setFormData({
-    jobName: '',
-    jobDescription: '',
-    jobApplication: '',
-    salary: '',
-    location: '',
-    employmentType: 'Full-time',
-  });
+      jobName: '',
+      jobDescription: '',
+      jobApplication: '',
+      salary: '',
+      location: '',
+      employmentType: 'Full-time',
+    });
   };
 
   const toggleJobDetails = (jobId) => {
@@ -87,12 +120,12 @@ const AdminView = () => {
     <div className="job-listing-container">
       {!showForm && (
         <button onClick={toggleForm} className='add-job-button'>
-          ➕
+          {editingJobId ? '✅' : '➕'}
         </button>
       )}
       {showForm && (
         <aside className="job-form-container">
-          <h2>Add New Job</h2>
+          <h2>{editingJobId ? 'Edit Job' : 'Add Job'}</h2>
           <form className="job-form">
             <div className="form-group">
               <label>Job Title</label>
@@ -181,7 +214,7 @@ const AdminView = () => {
             </div>
 
             <button type="button" onClick={addJob} className="submit-button">
-              Add Job
+              {editingJobId ? 'Save Changes' : 'Add Job'}
             </button>
           </form>
         </aside>
@@ -241,6 +274,9 @@ const AdminView = () => {
                     </div>
                   </div>
                 )}
+
+                <button onClick={() => editJob(job)} className="edit-button">Edit</button>
+                <button onClick={() => deleteJob(job.id)} className="delete-button">Delete</button>
               </div>
             ))
           ) : (

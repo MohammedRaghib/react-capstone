@@ -67,7 +67,7 @@ function Registration({ handleview }) {
             if (auth.currentUser.email === 'admin@gmail.com') {
                 handleview('admin')
             } else {
-                handleview('role')
+                alert('Cannot access admin view')
             }
         } catch (error) {
             console.log(error);
@@ -90,7 +90,7 @@ function Registration({ handleview }) {
             setLoginError(error.message);
         } finally {
             setIsLoading(false);
-            handleview('role')
+            handleview('Applicant')
         }
     };
 
