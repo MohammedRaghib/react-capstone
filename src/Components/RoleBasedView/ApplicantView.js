@@ -1,4 +1,3 @@
-// src/components/RoleBasedView/ApplicantView.js
 import React, { useState, useEffect } from 'react';
 import './RoleBasedView.css';
 import { collection, getDocs } from "firebase/firestore";

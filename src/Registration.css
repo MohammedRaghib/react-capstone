@@ -21,13 +21,11 @@
     text-align: center;
 }
 
-/* Heading */
 .container h2 {
     color: #FFC300;
     margin-bottom: 1rem;
 }
 
-/* Success and Error Messages */
 .success-message {
     color: #FFD60A;
     font-weight: bold;
@@ -36,12 +34,10 @@
 
 .error-message {
     color: #FF5733;
-    /* Red for error messages */
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
-/* Form */
 form.log {
     display: flex;
     flex-direction: column;

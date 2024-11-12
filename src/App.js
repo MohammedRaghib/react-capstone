@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import Registration from './Registration';
 import ControlButtons from './Components/ControlButtons';

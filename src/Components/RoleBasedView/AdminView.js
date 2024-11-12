@@ -17,7 +17,6 @@ const AdminView = () => {
   });
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetch jobs from Firestore
   const fetchJobs = async () => {
     const jobsCollection = collection(db, "jobs");
     const jobSnapshot = await getDocs(jobsCollection);
@@ -56,7 +55,7 @@ const AdminView = () => {
     try {
       const docRef = await addDoc(collection(db, "jobs"), newJob);
       console.log("Document written with ID: ", docRef.id);
-      fetchJobs(); // Refresh the job list after adding
+      fetchJobs();
     } catch (e) {
       console.error("Error adding document: ", e);
     }
