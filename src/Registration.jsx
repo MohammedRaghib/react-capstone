@@ -11,7 +11,7 @@ import {
     deleteUser,
 } from "firebase/auth";
 import { useState } from "react";
-import { app } from "./firebase"; // Adjust the path as necessary
+import { app } from "./firebase";
 import './Registration.css';
 
 function Registration({ handleview }) {
@@ -67,7 +67,7 @@ function Registration({ handleview }) {
             if (auth.currentUser.email === 'admin@gmail.com') {
                 handleview('admin')
             } else {
-                handleview('role')
+                handleview('Applicant')
             }
         } catch (error) {
             console.log(error);
@@ -90,7 +90,7 @@ function Registration({ handleview }) {
             setLoginError(error.message);
         } finally {
             setIsLoading(false);
-            handleview('role')
+            handleview('Applicant')
         }
     };
 
