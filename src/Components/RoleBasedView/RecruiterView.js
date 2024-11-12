@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RoleBasedView.css';
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { db } from '../../firebase'; // Adjust the path as necessary
 
 const RecruiterView = () => {
   const [showForm, setShowForm] = useState(false);
@@ -24,6 +26,18 @@ const RecruiterView = () => {
   });
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Fetch jobs from Firestore
+  const fetchJobs = async () => {
+    const jobsCollection = collection(db, "jobs");
+    const jobSnapshot = await getDocs(jobsCollection);
+    const jobList = jobSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setJobs(jobList);
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
   const filteredJobs = jobs.filter(job =>
     job.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -36,9 +50,8 @@ const RecruiterView = () => {
     }));
   };
 
-  const addJob = () => {
+  const addJob = async () => {
     const newJob = {
-      id: Date.now(),
       name: formData.jobName,
       description: formData.jobDescription,
       application: formData.jobApplication,
@@ -46,41 +59,39 @@ const RecruiterView = () => {
       salary: formData.salary,
       location: formData.location,
       employmentType: formData.employmentType,
-      experience: formData.experience,
-      qualifications: formData.qualifications,
-      responsibilities: formData.responsibilities,
-      benefits: formData.benefits,
-      deadline: formData.deadline,
-      workSchedule: formData.workSchedule,
-      department: formData.department,
-      reportingTo: formData.reportingTo,
-      remote: formData.remote,
       datePosted: new Date().toISOString().split('T')[0]
     };
 
-    setJobs(prevJobs => [...prevJobs, newJob]);
+    try {
+      const docRef = await addDoc(collection(db, "jobs"), newJob);
+      console.log("Document written with ID: ", docRef.id);
+      fetchJobs(); // Refresh the job list after adding
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+
     resetForm();
     toggleForm();
   };
 
   const resetForm = () => {
     setFormData({
-      jobName: '',
-      jobDescription: '',
-      jobApplication: '',
-      salary: '',
-      location: '',
-      employmentType: 'Full-time',
-      experience: '',
-      qualifications: '',
-      responsibilities: '',
-      benefits: '',
-      deadline: '',
-      workSchedule: '',
-      department: '',
-      reportingTo: '',
-      remote: 'No'
-    });
+    jobName: '',
+    jobDescription: '',
+    jobApplication: '',
+    salary: '',
+    location: '',
+    employmentType: 'Full-time',
+    experience: '',
+    qualifications: '',
+    responsibilities: '',
+    benefits: '',
+    deadline: '',
+    workSchedule: '',
+    department: '',
+    reportingTo: '',
+    remote: 'No'
+  });
   };
 
   const toggleJobDetails = (jobId) => {
@@ -188,97 +199,6 @@ const RecruiterView = () => {
               </div>
             </div>
 
-            <div className="form-group">
-              <label>Required Experience</label>
-              <input
-                type="text"
-                name="experience"
-                value={formData.experience}
-                onChange={handleInputChange}
-                placeholder="e.g., 3+ years"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Qualifications</label>
-              <textarea
-                name="qualifications"
-                value={formData.qualifications}
-                onChange={handleInputChange}
-                placeholder="Required qualifications and skills"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Responsibilities</label>
-              <textarea
-                name="responsibilities"
-                value={formData.responsibilities}
-                onChange={handleInputChange}
-                placeholder="Key job responsibilities"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Benefits</label>
-              <textarea
-                name="benefits"
-                value={formData.benefits}
-                onChange={handleInputChange}
-                placeholder="e.g., Health insurance, 401(k), etc."
-              />
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label>Application Deadline</label>
-                <input
-                  type="date"
-                  name="deadline"
-                  value={formData.deadline}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Work Schedule</label>
-                <input
-                  type="text"
-                  name="workSchedule"
-                  value={formData.workSchedule}
-                  onChange={handleInputChange}
-                  placeholder="e.g., Mon-Fri, 9-5"
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label>Department</label>
-                <input
-                  type="text"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Reporting To</label>
-                <input
-                  type="text"
-                  name="reportingTo"
-                  value={formData.reportingTo}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </div>
-
             <button type="button" onClick={addJob} className="submit-button">
               Add Job
             </button>
@@ -333,58 +253,6 @@ const RecruiterView = () => {
                     <div className="detail-section">
                       <p className="detail-label">Description:</p>
                       <p>{job.description || 'Not specified'}</p>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Link to apply:</p>
-                      <p>{job.application || 'Not specified'}</p>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Required Experience:</p>
-                      <p>{job.experience || 'Not specified'}</p>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Qualifications:</p>
-                      <p>{job.qualifications || 'Not specified'}</p>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Responsibilities:</p>
-                      <p>{job.responsibilities || 'Not specified'}</p>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Benefits:</p>
-                      <p>{job.benefits || 'Not specified'}</p>
-                    </div>
-
-                    <div className="details-grid">
-                      <div>
-                        <p className="detail-label">Work Schedule:</p>
-                        <p>{job.workSchedule || 'Not specified'}</p>
-                      </div>
-                      <div>
-                        <p className="detail-label">Remote Work:</p>
-                        <p>{job.remote}</p>
-                      </div>
-                    </div>
-
-                    <div className="details-grid">
-                      <div>
-                        <p className="detail-label">Department:</p>
-                        <p>{job.department || 'Not specified'}</p>
-                      </div>
-                      <div>
-                        <p className="detail-label">Reporting To:</p>
-                        <p>{job.reportingTo || 'Not specified'}</p>
-                      </div>
-                    </div>
-
-                    <div className="detail-section">
-                      <p className="detail-label">Application Deadline:</p>
-                      <p>{job.deadline || 'Not specified'}</p>
                     </div>
                   </div>
                 )}
