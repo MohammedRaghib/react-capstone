@@ -1,117 +1,174 @@
-/* * {
-    background-color: #000814;
-} */
-.checkboxes{
-    display: inline-flex;
-    flex-direction: row;
-    gap: 10px;
-}
-.login_and_sign_up{
-    display: inline-flex;
-    flex-direction: row;
-    gap: 10px;
-}
-.container {
-    background-color: #000814;
-    color: #FFD60A;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 400px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-    text-align: center;
+/* Global Styles */
+* {
+    box-sizing: border-box; /* Make sure all elements respect padding and border */
 }
 
+/* Background Color */
+body {
+    background: linear-gradient(to right, #000814, #1b1e21); /* Dark gradient background */
+    color: #FFD60A;
+    font-family: 'Arial', sans-serif; /* Font for a modern look */
+}
+
+/* Container styles */
+.container {
+    background: linear-gradient(145deg, #011D3D, #003566); /* Soft gradient background */
+    color: #FFD60A;
+    padding: 2rem;
+    border-radius: 15px; /* Make corners more rounded */
+    max-width: 400px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.1); /* Softer shadow */
+    text-align: center;
+    transition: transform 0.3s ease; /* Slight bouncing effect */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 0.5s forwards; /* Fade in animation */
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.container:hover {
+    transform: scale(1.02); /* Scale up on hover for dynamic effect */
+}
+
+/* Header styles */
 .container h2 {
     color: #FFC300;
     margin-bottom: 1rem;
+    font-size: 1.8rem; /* Larger font size */
 }
 
-.success-message {
-    color: #FFD60A;
+/* Message styles */
+.success-message, .error-message {
     font-weight: bold;
     margin-bottom: 1rem;
+    font-size: 1.1rem; /* Slightly larger font for messages */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 0.3s forwards; /* Fade in animation */
+}
+
+/* Delay messages visibility */
+.success-message {
+    color: #FFD60A; /* Success message color */
 }
 
 .error-message {
-    color: #FF5733;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    color: #FF5733; /* Error message color */
 }
 
+/* Form styles */
 form.log {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
+/* Input and button styles */
 input[type="email"],
 input[type="password"],
 button {
-    color: #FFC300;
+    color: #000814;
     padding: 0.75rem;
     border-radius: 5px;
     border: none;
     outline: none;
     font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
-/* Input Fields */
+/* Input Field Styles */
 input[type="email"],
 input[type="password"] {
     background-color: #011D3D;
     color: #FFD60A;
     border: 1px solid #003566;
+    position: relative; /* Relative positioning for the underline */
 }
 
-/* Checkbox and Labels */
-.input-container label,
-label[for="rememberMe"] {
-    color: #FFD60A;
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: 2px solid #FFC300; /* Highlight border on focus */
+    animation: inputFocusAnimation 0.3s ease; /* Animation on focus */
 }
 
+/* Input Focus Animation */
+@keyframes inputFocusAnimation {
+    from {
+        border-bottom: 2px solid #FFD60A; /* Start with this color */
+    }
+    to {
+        border-bottom: 2px solid #FFC300; /* End with this color */
+    }
+}
+
+/* Checkbox Styles */
 .input-container {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
+.input-container label,
+label[for="rememberMe"] {
+    color: #FFD60A;
+}
+
 input[type="checkbox"] {
     transform: scale(1.2);
 }
 
-/* Buttons */
+/* Button Styles */
 button {
-    background-color: #FFC300;
+    background: linear-gradient(to right, #FFC300, #FFD60A);
     color: #000814;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     font-weight: bold;
 }
 
 button:hover {
-    background-color: #FFD60A;
+    background: linear-gradient(to right, #FFD60A, #FFC300);
+    transform: scale(1.05); /* Lift effect on hover */
+    transition-duration: 0.3s; /* Transition duration for effect */
 }
 
-.google-button {
-    background-color: #FFC300;
-    color: #000814;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.google-button:hover {
-    background-color: #FFD60A;
-}
-
-/* Additional Buttons */
+/* Disabled Button Styles */
 button:disabled {
     background-color: #555;
     color: #ccc;
     cursor: not-allowed;
 }
 
+/* Google Button Styles */
+.google-button {
+    background: linear-gradient(to right, #FFC300, #FFD60A);
+    color: #000814;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.google-button:hover {
+    background: linear-gradient(to right, #FFD60A, #FFC300);
+}
+
+/* Flexbox Styles for Grouping */
+.checkboxes {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.login_and_sign_up {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* Additional Styles */
 .btn {
     margin: 10px;
 }
