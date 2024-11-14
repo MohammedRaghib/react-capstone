@@ -1,114 +1,16 @@
-/* *{
-  background-color: #000814;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
-
-body {
-  background-color: #000814;
-  /* Very dark blue */
-  color: #FFD60A;
-  /* Light yellow for text */
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+:root {
+  --midnight-blue: #000814;
+  --navy-blue: #011D3D;
+  --ocean-blue: #003566;
+  --golden-yellow: #FFC300;
+  --bright-yellow: #FFD60A;
 }
 
-.container {
-  background-color: #001D3D;
-  /* Dark navy blue */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-}
-
-h2 {
-  text-align: center;
-  color: #FFC300;
-  /* Bright yellow */
-}
-
-input[type="email"],
-input[type="password"],
-button,
-.google-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 4px;
-  border: 1px solid #003566;
-  /* Medium-dark blue */
-  background-color: #003566;
-  /* Medium-dark blue */
-  color: #FFD60A;
-  /* Light yellow for text */
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus,
-button:focus,
-.google-button:focus {
-  outline: none;
-  border-color: #FFD60A;
-  /* Light yellow */
-}
-
-.btn {
-  background-color: #FFC300;
-  /* Bright yellow */
-  color: #000814;
-  /* Very dark blue */
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #FFD60A;
-  /* Lighter, more vibrant yellow */
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.success-message {
-  color: #FFC300;
-  /* Bright yellow */
-  text-align: center;
-}
-
-.error-message {
-  color: red;
-  text-align: center;
-}
-
-.input-container {
-  position: relative;
-}
-
-label[for="showPassword"] {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #FFD60A;
-  /* Light yellow */
-  cursor: pointer;
-}
-
-#showPassword {
-  margin-left: 5px;
-}
-
-label[for="rememberMe"] {
-  color: #FFD60A;
-  /* Light yellow */
-  margin-left: 5px;
+* {
+background-color: var(--midnight-blue);
+display: flex !important;
+flex-direction: column;
+justify-content: center !important;
+align-items: center;
+overflow-x: hidden;
 }

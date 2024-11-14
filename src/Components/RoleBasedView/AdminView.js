@@ -256,21 +256,21 @@ const AdminView = () => {
                     <div className="details-grid">
                       <div>
                         <p className="detail-label">Salary Range:</p>
-                        <p>{job.salary || 'Not specified'}</p>
+                        <p className='info'>{job.salary || 'Not specified'}</p>
                       </div>
                       <div>
                         <p className="detail-label">Employment Type:</p>
-                        <p>{job.employmentType}</p>
+                        <p className='info'>{job.employmentType}</p>
                       </div>
                       <div>
                         <p className="detail-label">Link to apply:</p>
-                        <p>{job.application}</p>
+                        <p className='info'>{job.application}</p>
                       </div>
                     </div>
 
                     <div className="detail-section">
                       <p className="detail-label">Description:</p>
-                      <p>{job.description || 'Not specified'}</p>
+                      <p className='info'>{job.description || 'Not specified'}</p>
                     </div>
                   </div>
                 )}
