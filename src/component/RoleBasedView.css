@@ -85,3 +85,25 @@ textarea::placeholder {
     word-wrap: break-word;
     word-break: break-all;
 }
+.recruit{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.recruit-btn{
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--bright-yellow);
+    color: var(--ocean-blue);
+}
+.payment-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.pay-method{
+    margin: 10px;
+    text-decoration: underline;
+    text-decoration-color: var(--golden-yellow);
+}

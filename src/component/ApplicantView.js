@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './RoleBasedView.css';
 import { collection, getDocs } from "firebase/firestore";
-import { db } from '../../firebase';
+import { db } from '../firebase';
 
-const ApplicantView = () => {
+const ApplicantView = ({ handleview }) => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [jobs, setJobs] = useState([]);
@@ -28,8 +28,17 @@ const ApplicantView = () => {
     setSelectedJob(selectedJob === jobId ? null : jobId);
   };
 
+  const payment = () => {
+    handleview('payment')
+  }
+
   return (
     <div className="job-listing-container">
+      <aside className='recruit' id='recruit'>
+       <button className='recruit-btn' onClick={payment}> 
+        Post a job
+       </button>
+      </aside>
       <main className="jobs-display">
         <h2>Posted Jobs</h2>
         <div className="search-container">

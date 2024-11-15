@@ -11,7 +11,7 @@ import {
     deleteUser,
 } from "firebase/auth";
 import { useState } from "react";
-import { app } from "./firebase";
+import { app } from "../firebase";
 import './Registration.css';
 
 function Registration({ handleview }) {
