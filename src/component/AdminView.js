@@ -55,7 +55,9 @@ const AdminView = () => {
 
     try {
       if (editingJobId) {
-        const docRef = await updateDoc(collection(db, 'jobs'), editingJobId);
+        const docRef = doc(db, 'jobs', editingJobId);
+        const docUpdate = await updateDoc(docRef, newJob)
+        await deleteDoc(docRef)
         console.log('Edited job with ID:' + docRef.id)
       }
       const docRef = await addDoc(collection(db, "jobs"), newJob);

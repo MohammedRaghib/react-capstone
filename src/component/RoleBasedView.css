@@ -4,48 +4,54 @@
     --ocean-blue: #003566;
     --golden-yellow: #FFC300;
     --bright-yellow: #FFD60A;
-  }
-
-* {
-  background-color: var(--midnight-blue);
-  display: flex;
-  flex-direction: column;
-  justify-content: center !important;
-  align-items: center;
-  overflow-x: hidden;
 }
 
-h2, h3{
+.job-listing-container {
+    background-color: var(--midnight-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow-x: hidden;
+}
+
+h2,
+h3 {
     color: var(--bright-yellow);
     background-color: var(--navy-blue);
     padding: 10px;
     border-radius: 15px;
+    width: fit-content;
 }
-.job-card{
+
+.job-card {
     background-color: var(--ocean-blue);
     margin: 10px;
     padding: 20px;
     border-radius: 15px;
     width: 90%;
 }
-.job-card-header{
+
+.job-card-header {
     color: var(--golden-yellow);
     padding: 15px;
     margin: 10px;
 }
 
-button{
+button {
     background-color: var(--bright-yellow) !important;
     width: 50%;
     margin: 5px;
 }
-.status-badge{
+
+.status-badge {
     color: greenyellow;
     background-color: red;
     padding: 10px;
     border-radius: 40%;
 }
-.search-input{
+
+.search-input {
     background-color: var(--ocean-blue);
     color: var(--bright-yellow);
     border: none;
@@ -53,15 +59,15 @@ button{
     padding: 10px;
 }
 
-.form-group{
+.form-group {
     background-color: var(--ocean-blue);
     padding: 10px;
     margin: 10px;
     width: 30vh;
     border-radius: 10px;
 }
-.form-group 
-label,
+
+.form-group label,
 input[type="text"],
 select,
 textarea {
@@ -69,40 +75,45 @@ textarea {
     margin: 5px;
     color: var(--bright-yellow);
 }
-.form-group
-input[type="text"]::placeholder,
+
+.form-group input[type="text"]::placeholder,
 select::placeholder,
 textarea::placeholder {
     color: var(--bright-yellow);
 }
 
-.job-details{
+.job-details {
     display: flex;
     color: var(--bright-yellow);
     width: 40%;
 }
-.info{
+
+.info {
     word-wrap: break-word;
     word-break: break-all;
 }
-.recruit{
+
+.recruit {
     position: fixed;
     top: 0;
     right: 0;
 }
-.recruit-btn{
+
+.recruit-btn {
     padding: 10px;
     margin: 10px;
     background-color: var(--bright-yellow);
     color: var(--ocean-blue);
 }
-.payment-form{
-    display: flex;
+
+.payment-form {
+    display: flex !important;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.pay-method{
+
+.pay-method {
     margin: 10px;
     text-decoration: underline;
     text-decoration-color: var(--golden-yellow);

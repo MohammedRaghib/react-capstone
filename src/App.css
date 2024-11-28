@@ -5,12 +5,3 @@
   --golden-yellow: #FFC300;
   --bright-yellow: #FFD60A;
 }
-
-* {
-background-color: var(--midnight-blue);
-display: flex !important;
-flex-direction: column;
-justify-content: center !important;
-align-items: center;
-overflow-x: hidden;
-}
