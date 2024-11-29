@@ -1,3 +1,5 @@
+// admin@gmail.com
+// @Dminisgood1
 import React, { useState, useEffect } from 'react';
 import './RoleBasedView.css';
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
@@ -56,7 +58,7 @@ const AdminView = () => {
     try {
       if (editingJobId) {
         const docRef = doc(db, 'jobs', editingJobId);
-        const docUpdate = await updateDoc(docRef, newJob)
+        await updateDoc(docRef, newJob)
         await deleteDoc(docRef)
         console.log('Edited job with ID:' + docRef.id)
       }
